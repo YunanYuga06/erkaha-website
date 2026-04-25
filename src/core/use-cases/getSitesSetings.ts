@@ -4,7 +4,9 @@ export interface SiteSettings {
   whatsappNumber: string;
   whatsappMessage: string;
   address: string;
-  instagramUrl: string;
+    instagramUrl: string;
+    aboutUs?: string; // Tambahkan properti ini sesuai dengan schema
+    googleMapsEmbedUrl?: string; // Tambahkan properti ini sesuai dengan schema
 }
 
 export async function getSiteSettings(): Promise<SiteSettings> {

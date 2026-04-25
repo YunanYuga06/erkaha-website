@@ -21,6 +21,7 @@ export const Navbar = () => {
           <Link href="/" className="text-yellow-400">Beranda</Link>
           <Link href="#portfolio" className="text-zinc-400 hover:text-white transition-colors">Portofolio</Link>
           <Link href="#layanan" className="text-zinc-400 hover:text-white transition-colors">Layanan</Link>
+          <Link href="/about" className="text-zinc-400 hover:text-white transition-colors">Tentang</Link>
           <button className="bg-yellow-400 px-5 py-2 text-black font-bold rounded-sm hover:bg-yellow-500 transition-transform active:scale-95">
             HUBUNGI KAMI
           </button>

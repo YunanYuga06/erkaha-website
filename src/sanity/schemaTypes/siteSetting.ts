@@ -32,5 +32,18 @@ export const siteSettingsType = defineType({
       title: 'Link Instagram',
       type: 'url',
     }),
+    defineField({
+      name: 'aboutUs',
+      title: 'Profil Perusahaan (About Us)',
+      description: 'Narasi singkat mengenai sejarah atau keahlian Erkaha Cloth.',
+      type: 'text',
+      rows: 5,
+    }),
+    defineField({
+        name: 'googleMapsEmbedUrl',
+        title: 'Google Maps Embed URL',
+        description: 'Buka Google Maps > Share > Embed a map > Copy src URL saja.',
+        type: 'string',
+    }),
   ],
 })

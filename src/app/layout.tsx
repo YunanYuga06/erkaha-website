@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/layout/Footer";
 
 // 1. Inisialisasi Font Utama (Sans Serif)
 const fontSans = Plus_Jakarta_Sans({ 
@@ -33,8 +34,10 @@ export default function RootLayout({
       <body 
         className={`${fontSans.variable} ${fontSerif.variable} font-sans bg-[#111111] text-white antialiased selection:bg-yellow-400 selection:text-black`}
       >
+
         {children}
       </body>
     </html>
   );
 }
+
