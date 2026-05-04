@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/features/Hero";
+import { AboutSnippet } from "@/components/features/AboutSnippet";
 // import { Services } from "@/components/features/Services";
 // import { Testimonials } from "@/components/features/Testimonials";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
@@ -9,6 +10,8 @@ import { PortfolioSlider } from "@/components/features/PortofolioSlider";
 import { ServicesSlider } from "@/components/features/ServiceSlider";
 import { TestimonialsSlider } from "@/components/features/TestimonialsSlider";
 import { BrandMarquee } from "@/components/features/BrandMarquee";
+import { SizeChartSection } from "@/components/features/SizeChartSection";
+import { PartnerLogosGrid } from "@/components/features/PartnerLogosGrid";
 
 import { getPortfolios } from "../core/use-cases/getPortofolios";
 import { getServices } from "@/core/use-cases/getServices";
@@ -16,6 +19,8 @@ import { getTestimonials } from "@/core/use-cases/getTestimonials";
 import { getSiteSettings } from "../core/use-cases/getSitesSetings";
 import { getUSPs } from "@/core/use-cases/getUSPs";
 import { getFAQs } from "@/core/use-cases/getFAQs";
+import { getSizeCharts } from "@/core/use-cases/getSizeCharts";
+import { getPartnerLogos } from "@/core/use-cases/getPartnerLogos";
 import { Footer } from "@/components/layout/Footer";
 
 export default async function Home() {
@@ -25,6 +30,8 @@ export default async function Home() {
   const usps = await getUSPs();
   const faqs = await getFAQs();
   const siteSettings = await getSiteSettings();
+  const sizeCharts = await getSizeCharts();
+  const partnerLogos = await getPartnerLogos();
 
 
   return (
@@ -35,6 +42,8 @@ export default async function Home() {
         whatsappMessage={siteSettings?.whatsappMessage} 
       />
       <USPSection data={usps} />
+      
+      <AboutSnippet text={siteSettings?.aboutUs ?? ""} />
       
       <section id="portfolio" className="bg-[#111111] py-24 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6">
@@ -57,6 +66,10 @@ export default async function Home() {
       
 
       <FAQSection data={faqs} />
+
+      <SizeChartSection data={sizeCharts} />
+
+      <PartnerLogosGrid data={partnerLogos} />
 
       <BrandMarquee/>
 

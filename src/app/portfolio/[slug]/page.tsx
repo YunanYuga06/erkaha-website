@@ -1,11 +1,11 @@
 import { getPortfolioBySlug } from "@/core/use-cases/getPortofolioBySlug";
-import { getSiteSettings } from "@/core/use-cases/getSitesSetings"; // Import use case settings
+import { getSiteSettings } from "@/core/use-cases/getSitesSetings";
 import { Navbar } from "@/components/layout/Navbar";
-import { OrderSimilarButton } from "@/components/ui/OrderSimiliarButton"; // Import tombol baru
+import { OrderSimilarButton } from "@/components/ui/OrderSimiliarButton";
 import { notFound } from "next/navigation";
+import { PortableText } from "@portabletext/react";
 
 export default async function PortfolioDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  // Ambil data portofolio dan pengaturan global secara paralel
   const [item, settings] = await Promise.all([
     getPortfolioBySlug((await params).slug),
     getSiteSettings(),
@@ -40,7 +40,6 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
                 </div>
               </div>
 
-              {/* Aktifkan Tombol dengan data dinamis */}
               {settings?.whatsappNumber ? (
                 <OrderSimilarButton 
                   whatsappNumber={settings.whatsappNumber} 
@@ -53,6 +52,17 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
               )}
             </div>
           </div>
+
+          {item.content && item.content.length > 0 && (
+            <div className="mt-24 max-w-3xl mx-auto">
+              <h2 className="text-2xl font-bold text-white mb-8 border-l-4 border-yellow-400 pl-4">
+                Cerita di Balik Proyek
+              </h2>
+              <div className="prose prose-invert max-w-none text-zinc-300 prose-a:text-yellow-400 hover:prose-a:text-yellow-300 prose-strong:text-white prose-headings:text-white">
+                <PortableText value={item.content} />
+              </div>
+            </div>
+          )}
         </div>
       </main>
     </>

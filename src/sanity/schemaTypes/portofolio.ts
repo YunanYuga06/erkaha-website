@@ -54,5 +54,12 @@ export const portfolioType = defineType({
       type: 'text',
       rows: 3,
     }),
+    defineField({
+      name: 'content',
+      title: 'Cerita Proyek (Case Study)',
+      description: 'Narasi lengkap mengenai tantangan, solusi, dan proses pengerjaan proyek.',
+      type: 'array',
+      of: [{ type: 'block' }],
+    }),
   ],
 })

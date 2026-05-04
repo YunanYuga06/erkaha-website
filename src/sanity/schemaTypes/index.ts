@@ -5,7 +5,9 @@ import { testimonialType } from './testimonial'
 import { siteSettingsType } from './siteSetting'
 import { uspType } from './usp'
 import { faqType } from './faq'
+import { sizeChartType } from './sizeChart'
+import { partnerLogoType } from './partnerLogo'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [portfolioType, serviceType, testimonialType, siteSettingsType, uspType, faqType],
+  types: [portfolioType, serviceType, testimonialType, siteSettingsType, uspType, faqType, sizeChartType, partnerLogoType],
 }

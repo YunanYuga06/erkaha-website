@@ -8,6 +8,7 @@ export async function getPortfolioBySlug(slug: string): Promise<Portfolio | null
   clientName,
   category,
   description,
+  content,
   "slug": slug.current,
   "imageUrl": mainImage.asset->url
 }`;

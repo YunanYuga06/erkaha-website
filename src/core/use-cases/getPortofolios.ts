@@ -1,7 +1,19 @@
 // src/core/use-cases/getPortfolios.ts
 import { client } from "../../infrastructure/cms/sanityFetch";
 
-// Mendefinisikan tipe data (Entity) agar TypeScript tidak protes
+export interface PortableTextBlock {
+  _type: string;
+  _key?: string;
+  style?: string;
+  markDefs?: object[];
+  children?: {
+    _type: string;
+    _key?: string;
+    text?: string;
+    marks?: string[];
+  }[];
+}
+
 export interface Portfolio {
   _id: string;
   title: string;
@@ -9,12 +21,11 @@ export interface Portfolio {
   category: string;
   imageUrl?: string;
   slug: string;
-  description?: string; // ⬅️ tambahkan ini
+  description?: string;
+  content?: PortableTextBlock[];
 }
 
 export async function getPortfolios(): Promise<Portfolio[]> {
-  // Kueri GROQ: Ambil semua dokumen bertipe 'portfolio'
-  // dan ekstrak langsung URL gambar utamanya
   const query = `*[_type == "portfolio"]{
   _id,
   title,
@@ -22,6 +33,7 @@ export async function getPortfolios(): Promise<Portfolio[]> {
   category,
   "slug": slug.current,
   description,
+  content,
   "imageUrl": mainImage.asset->url
 }`;
 
